@@ -582,107 +582,6 @@ for(threshold in c(5e-5, 5e-6, 5e-7)){
     }
 }
 
-# +
-ts1 = read.csv("info.csv", header = T)$phenocode
-ts2 = c("1747_5", "1727")
-ts1 = setdiff(ts1, ts2)
-
-base_dir <- getwd()
-
-temp_dir <- "./CSA_results"
-dir.create(temp_dir, recursive = TRUE, showWarnings = FALSE)
-
-
-methods = c("IVW_fe", "MRMix", "MR-Robust", "MR-Lasso", "cML-MA", "MR-PRESSO")
-
-for(threshold in c(5e-5, 5e-6, 5e-7)){
-    
-    for(s in 1:length(ts2)){
-
-        print(paste('outcome:', ts2[s]))
-
-        for(t in 15:16){
-
-            print(paste('exposure:', ts1[t]))
-            
-            
-            exp.pop2 = fread(paste0(base_dir, "/formatted_data/CSA_", ts1[t]))
-            out.pop2 = fread(paste0(base_dir, "/formatted_data/CSA_", ts2[s]))
-            
-
-            paras1 = align_data(dat1 = exp.pop2,
-                               dat2 = out.pop2,
-                               trait1.name = paste0("CSA_", ts1[t]),
-                               trait2.name = paste0("CSA_", ts2[s]),
-                               h2.fix.intercept = F,
-                               LDSC = F
-                               )
-
-
-            dat = paras1$dat
-            colnames(dat) = c("SNP", "A1", "A2", "b.exp", "b.out", "se.exp", "se.out", "pval.exp", "pval.out" )
-
-            dat = merge(dat, ldscore0, by="SNP")
-            dat$Threshold = threshold
-
-
-            result <- tryCatch({
-                clumped.MR = MRAPSS::clump(dat,
-                                           IV.Threshold = threshold,
-                                           SNP_col = "SNP",
-                                           pval_col = "pval.exp",
-                                           clump_kb = 1000,
-                                           clump_r2 = 0.001,
-                                           bfile = paste0(base_dir,"/1kg_pops/SAS_phase3_hg38_autosomes"),
-                                           plink_bin = paste0(base_dir,"/plink_Linux"))
-                clumped.MR$Threshold = threshold
-
-
-                ldmat = NULL
-
-                for(i in 1:length(methods)){
-
-                  ### only run when nIV > 3
-                  res = runMRmethods(dat=clumped.MR, ldmat=ldmat, Threshold=threshold, 
-                                   exposure=ts1[t], outcome=ts2[s], methods.list = methods[i])
-
-                  write.table(res, paste0("./CSA_results/",methods[i],".MRres"), quote=F, col.names = F, append = T,row.names = F)
-
-                }
-                
-                
-                res_conmix = runMRmethods(dat=clumped.MR, ldmat=ldmat, Threshold=threshold, 
-                                   exposure=ts1[t], outcome=ts2[s], ConMixonly = T)
-
-                write.table(res_conmix, paste0("./CSA_results/","ConMix",".MRres"), quote=F, col.names = F, append = T,row.names = F)
-
-
-                res_divw = mr.divw::mr.divw(beta.exposure=clumped.MR$b.exp, beta.outcome=clumped.MR$b.out, 
-                                            se.exposure=clumped.MR$se.exp, se.outcome=clumped.MR$se.out, 
-                                            diagnostics=F, over.dispersion=T)
-
-                divw.res = data.frame(exposure = ts1[t], outcome=ts2[s],
-                                        method = "dIVW", Threshold = threshold,
-                                        nsnp = res_divw$n.IV , beta = res_divw$beta.hat, se = res_divw$beta.se, 
-                                        pval = pchisq(res_divw$beta.hat^2/res_divw$beta.se^2, 1, lower.tail = F))
-
-                write.table(divw.res, paste0("./CSA_results/","dIVW",".MRres"), quote=F, col.names = F, append = T,row.names = F)
-
-                
-                TRUE
-            }, error = function(e) {
-                # Print the actual error message before skipping
-                print(paste("Error for exposure", ts1[t], "outcome", ts2[s],
-                            "threshold", threshold, ":", e$message))
-                FALSE
-            })
-
-            if(!result) next
-            
-        }
-    }
-}
-# -
 
 # ### CAUSE
 
@@ -705,7 +604,7 @@ for(threshold in c(5e-5, 5e-6, 5e-7)){
 
         print(paste('outcome:', ts2[s]))
 
-        for(t in 1:2){
+        for(t in 1:length(ts1)){
 
             print(paste('exposure:', ts1[t]))
 

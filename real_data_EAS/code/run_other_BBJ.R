@@ -606,7 +606,7 @@ for(threshold in c(5e-5)){
 
         print(paste('outcome:', ts2[s]))
 
-        for(t in 1:1){
+        for(t in 1:length(ts1)){
 
             print(paste('exposure:', ts1[t]))
 
