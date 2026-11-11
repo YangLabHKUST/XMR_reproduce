@@ -1,0 +1,15 @@
+package	observed_version	upstream_repository	upstream_reference
+XMR	0.1.0	YangLabHKUST/XMR	e847e78f687ad0b3dc524624977deeea55e91d37
+XMAP	1.0	not recorded	not recorded
+MRAPSS	0.0.0.9000	YangLabHKUST/MR-APSS	85c18eaef8ccbc1b330d31db0b3984c2fd0f528f
+CAMeRa	0.1.0	yoonsucho/CAMERA	24db2f8f2c7290a4e1bf0269e05a4bc0dd74b4cb
+MRBEE	1.0.0	noahlorinczcomi/MRBEE	07c060cac5e8c831dc3adfa2b9f8b1f4fdb04db3
+MRBEEX	0.1.0	harryyiheyang/MRBEEX	226fdaed9cf4ca42f3d2aa7a05987e3260e694be
+TEMR	0.1.0	hhoulei/TEMR	6566f33527c6e575aaced2840518c1a11aaa2957
+data.table	1.17.8	not recorded	not recorded
+ggplot2	4.0.3	not recorded	not recorded
+cowplot	1.2.0	not recorded	not recorded
+Matrix	1.6-5	not recorded	not recorded
+expm	1.0-1	not recorded	not recorded
+mvtnorm	1.4-2	not recorded	not recorded
+digest	0.6.37	not recorded	not recorded
