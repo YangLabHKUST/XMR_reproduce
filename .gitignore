@@ -14,3 +14,11 @@ negative_controls/plink_Linux
 .Rhistory
 .RData
 .DS_Store
+
+# Small trait descriptions required by the BBJ–TPMI runners.
+!BBJ_TPMI/raw_data/
+BBJ_TPMI/raw_data/*
+!BBJ_TPMI/raw_data/BBJ/
+BBJ_TPMI/raw_data/BBJ/*
+!BBJ_TPMI/raw_data/BBJ/EUR_BBJ_exposure_description.csv
+!BBJ_TPMI/raw_data/BBJ/EUR_BBJ_outcome_description.csv

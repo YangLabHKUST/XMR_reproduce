@@ -1,0 +1,8 @@
+"Category","UKB.Phenotype","UKB.samples","UKB.cases","UKB.controls","UKB.code","UKB.address","BBJ.Phenotype","BBJ.samples","BBJ.cases","BBJ.controls","BBJ.address","BBJ.code"
+"Anthropometric","Body mass index (BMI)",359983,"-","-",21001,NA,"Body mass index (BMI)",163835,"-","-",NA,"BMI"
+"Blood cell","Hemoglobin (Hb)",350474,"-","-",30020,NA,"Hemoglobin (Hb)",152447,"-","-",NA,"Hb"
+"Blood pressure","Diastolic blood pressure (DBP)",340162,"-","-",4079,NA,"Diastolic blood pressure (DBP)",145515,"-","-",NA,"DBP"
+"Liver-related","Alanine aminotransferase (ALT)",344136,"-","-",30620,NA,"Alanine aminotransferase (ALT)",150545,"-","-",NA,"ALT"
+"Metabolic","Glucose (BS)",314916,"-","-",30740,NA,"Glucose (BS)",133336,"-","-",NA,"Glucose"
+"Metabolic","HbA1c (HbA1c)",344182,"-","-",30750,NA,"HbA1c (HbA1c)",71221,"-","-",NA,"HbA1c"
+"Metabolic","LDL-cholesterol (LDL-C)",343621,"-","-",30780,NA,"LDL-cholesterol (LDL-C)",72866,"-","-",NA,"LDLC"

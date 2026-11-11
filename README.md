@@ -15,8 +15,9 @@ experimental categories in Figure 2. The XMR method is provided in
 ## Workflow
 
 1. Install the [software dependencies](environment/README.md).
-2. Place formatted GWAS, trait metadata, LD scores and LD reference panels at the locations
-   in [DATA.md](DATA.md).
+2. Obtain GWAS from [GWAS_data_sources.csv](https://github.com/YangLabHKUST/XMR/blob/main/GWAS_data_sources.csv),
+   follow the [formatting notes](FORMATTING.md), and place formatted GWAS, LD scores and
+   LD reference panels at the locations in [DATA.md](DATA.md). Trait metadata are included.
 3. Run the analysis entry point for an experiment. It estimates the required backgrounds,
    selects instruments, fits the methods and writes result tables.
 4. Run the separate plotting command from that experiment's README.

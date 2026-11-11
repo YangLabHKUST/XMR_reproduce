@@ -1,7 +1,10 @@
 # Data inputs
 
-Obtain the GWAS summary statistics from the sources listed in the paper's Supplementary Data.
-Apply the study-specific formatting and quality-control steps before running the analysis scripts.
+Obtain the GWAS summary statistics from
+[GWAS_data_sources.csv](https://github.com/YangLabHKUST/XMR/blob/main/GWAS_data_sources.csv),
+which lists experiment-specific sources and references to the Supplementary tables.
+See [FORMATTING.md](FORMATTING.md) for `MRAPSS::format_data()`, sample sizes,
+P-value conversion and rsID mapping.
 The R scripts read formatted tables with `SNP`, `A1`, `A2`, `Z`, `N` and `P` columns;
 `P` is on the probability scale. Additional metadata and panel files are listed below.
 The real-data entry points start from these formatted tables.
@@ -23,19 +26,43 @@ negative_controls/
 ```
 
 CSA analyses use the SAS reference; BBJ and TPMI use EAS. FinnGen auxiliary analyses use EUR.
-The PLINK panels use GRCh38 coordinates and are supplied separately. Place the three
-`.bed`, `.bim` and `.fam` files for each population under `1kg_pops/`, with the prefixes
-shown above. The analysis panels contain 633 EUR, 585 EAS, 893 AFR and 601 SAS samples.
-A link to the panel download will accompany the data distribution.
+The PLINK panels use GRCh38 coordinates. See [REFERENCE_PANELS.md](REFERENCE_PANELS.md)
+for the official public source, population splitting and `MAF >= 0.005` preparation.
+Place each population's `.bed`, `.bim` and `.fam` files under `1kg_pops/`, with the
+prefixes shown above. The public preparation has not been verified to produce
+files identical to the study panels.
 
 `LDscore_eas_brit_afr.txt` has columns `chromosome`, `rsid`, `position`, `allele1`, `allele2`,
 `AFR`, `EUR`, `EAS`, `AFR_EUR`, `AFR_EAS`, `EUR_EAS`.
 `LDscore_SAS_EUR.csv` is tab-delimited despite its extension and has columns
 `CHR`, `SNP`, `BP`, `CSA`, `EUR`, `CSA_EUR`, `EUR_CSA`, `EUR_EUR`, `CSA_CSA`.
 These score files are distinct resources from the PLINK clumping panels.
-Use the study LD-score files supplied with the input resources.
+The **XMR LD-score resources** download contains lossless gzip copies of these two
+study files, with `files_manifest.tsv` (sizes, line counts and SHA-256 values) and
+`SHA256SUMS` for the compressed files. **Zenodo link pending publication.**
+After checking the downloaded files against `SHA256SUMS`, decompress them into
+`negative_controls/` with their original names. The `.csv` file remains tab-delimited.
+
+```bash
+# Run in the directory containing the downloaded files.
+sha256sum -c SHA256SUMS
+gzip -t LDscore_eas_brit_afr.txt.gz LDscore_SAS_EUR.csv.gz
+# From the repository root, after placing the .gz files in negative_controls/:
+gzip -dk negative_controls/LDscore_eas_brit_afr.txt.gz
+gzip -dk negative_controls/LDscore_SAS_EUR.csv.gz
+```
+
+On macOS, use `shasum -a 256 -c SHA256SUMS` in place of `sha256sum`.
 
 ## Experiment-specific inputs
+
+Four small metadata files are included: the [37-trait negative-control list](negative_controls/info.csv),
+the [68-trait auxiliary manifest](auxiliary_sensitivity/data/BBJ_PanUKB_FinnGen_68_traits_data_manifest.csv),
+and the BBJ [7-exposure](BBJ_TPMI/raw_data/BBJ/EUR_BBJ_exposure_description.csv) and
+[15-outcome](BBJ_TPMI/raw_data/BBJ/EUR_BBJ_outcome_description.csv) descriptions.
+Their identifiers and row order are retained for the analysis scripts. Keep these
+filenames unchanged. The auxiliary manifest describes the candidate traits; the
+final comparison uses the available, matched results selected by the plotting code.
 
 | Analysis | Required files relative to the repository root |
 | --- | --- |
