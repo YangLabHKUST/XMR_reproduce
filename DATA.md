@@ -37,11 +37,9 @@ files identical to the study panels.
 `LDscore_SAS_EUR.csv` is tab-delimited despite its extension and has columns
 `CHR`, `SNP`, `BP`, `CSA`, `EUR`, `CSA_EUR`, `EUR_CSA`, `EUR_EUR`, `CSA_CSA`.
 These score files are distinct resources from the PLINK clumping panels.
-The **XMR LD-score resources** download contains lossless gzip copies of these two
-study files, with `files_manifest.tsv` (sizes, line counts and SHA-256 values) and
-`SHA256SUMS` for the compressed files. **Zenodo link pending publication.**
-After checking the downloaded files against `SHA256SUMS`, decompress them into
-`negative_controls/` with their original names. The `.csv` file remains tab-delimited.
+Download the two compressed study LD-score files from
+[XMR LD-score resources on Zenodo](https://doi.org/10.5281/zenodo.24137958).
+Decompress them into `negative_controls/` with their original names.
 
 ```bash
 # Run in the directory containing the downloaded files.
