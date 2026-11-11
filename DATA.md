@@ -43,14 +43,11 @@ Decompress them into `negative_controls/` with their original names.
 
 ```bash
 # Run in the directory containing the downloaded files.
-sha256sum -c SHA256SUMS
 gzip -t LDscore_eas_brit_afr.txt.gz LDscore_SAS_EUR.csv.gz
 # From the repository root, after placing the .gz files in negative_controls/:
 gzip -dk negative_controls/LDscore_eas_brit_afr.txt.gz
 gzip -dk negative_controls/LDscore_SAS_EUR.csv.gz
 ```
-
-On macOS, use `shasum -a 256 -c SHA256SUMS` in place of `sha256sum`.
 
 ## Experiment-specific inputs
 
