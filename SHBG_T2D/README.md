@@ -25,10 +25,6 @@ Rscript SHBG_T2D/code/run_SHBG_T2D_TEMR.R
 | MR-APSS and MRBEE/TL | `prepare_background.R` estimates backgrounds for EUR, EAS, AFR and CSA. It explicitly uses `cross_intercept_zero = FALSE` and applies the covariance QC used by these analyses. The two method runners read the resulting population-indexed `C` and `Omega0` lists. | `results/SHBG-T2D-bgparas.RData` |
 | XMR | The XMR runner estimates backgrounds with `cross_intercept_zero = TRUE`, selects IVs and fits the `stage2_C0` analysis. | `results/xmr_pipeline/` |
 
-The XMR analysis uses the public `XMR::estimate_bgparas()` interface. The `stage2_C0` arm
-means that cross-population intercepts are fixed at zero during stage 2 of LDSC. The
-comparator background file is generated separately and does not replace this XMR background.
-
 The XMR summary for plotting is written to
 `results/crossPopIntercept0/SHBG_T2D_XMR_EUR_selected_FEMA_P_target_clump_noEffectHetQC.tsv`.
 The comparison methods write to their respective directories under `results/`.
