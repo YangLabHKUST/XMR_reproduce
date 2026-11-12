@@ -38,7 +38,4 @@ Use a fresh results directory when changing input data, model settings or packag
 since some method scripts reuse existing backgrounds or completed fits.
 
 Real-data analysis and plotting use R. Simulation input generation and LD processing use
-Python, with Bash connecting the stages. Notebooks are not required.
-
-GWAS, LD resources and result tables are supplied separately. The [Figure 3 plotting workflow](simulations/plot/README.md)
-summarizes completed simulation fits and assembles the twelve-panel figure.
+Python, with Bash connecting the stages. GWAS, LD resources and result tables are supplied separately.
