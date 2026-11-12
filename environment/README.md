@@ -11,9 +11,7 @@ Use the XMR implementation at commit `e847e78f687ad0b3dc524624977deeea55e91d37`:
 remotes::install_github("YangLabHKUST/XMR@e847e78f687ad0b3dc524624977deeea55e91d37")
 ```
 
-This interface includes `estimate_bgparas(cross_intercept_zero = ...)` and accepts the
-unadjusted IV-selection threshold in `fit_XMR()`. Install XMAP as described in the XMR
-repository before installing XMR. `R_packages.tsv` lists analysis-environment versions and
+`R_packages.tsv` lists analysis-environment versions and
 available source commits for the comparison methods. It records the analysis dependencies;
 it is not a complete environment lockfile.
 
