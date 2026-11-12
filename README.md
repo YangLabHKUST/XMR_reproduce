@@ -6,7 +6,7 @@ experimental categories in Figure 2. The XMR method is provided in
 
 | Figure | Analysis | Instructions | Experiment code | Plotting code |
 | --- | --- | --- | --- | --- |
-| 3 | Baseline and reduced-confounding simulations | [Simulation workflow](simulations/README.md) | `simulations/code/` | `simulations/plot/` (general evaluation; final composition pending) |
+| 3 | Baseline and reduced-confounding simulations | [Simulation workflow](simulations/README.md) | `simulations/code/` | `simulations/plot/` |
 | 4 | Negative controls | [Negative-control workflow](negative_controls/README.md) | `negative_controls/code/` | `negative_controls/plot/` |
 | 5 | Auxiliary-dataset sensitivity | [Auxiliary-sensitivity workflow](auxiliary_sensitivity/README.md) | `auxiliary_sensitivity/code/` | `auxiliary_sensitivity/plot/` |
 | 6 | SHBG–T2D | [SHBG–T2D workflow](SHBG_T2D/README.md) | `SHBG_T2D/code/` | `SHBG_T2D/plot/` |
@@ -40,5 +40,5 @@ since some method scripts reuse existing backgrounds or completed fits.
 Real-data analysis and plotting use R. Simulation input generation and LD processing use
 Python, with Bash connecting the stages. Notebooks are not required.
 
-GWAS, LD resources and result tables are supplied separately. The final Figure 3 composition
-script is pending; the included evaluation scripts produce general simulation summaries.
+GWAS, LD resources and result tables are supplied separately. The [Figure 3 plotting workflow](simulations/plot/README.md)
+summarizes completed simulation fits and assembles the twelve-panel figure.

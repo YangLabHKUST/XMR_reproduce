@@ -57,7 +57,20 @@ and append `_bgRhoLinked_uxvy0.1_vyux0.1_easCorr0.2_C1.05_0.05_1.05` to the conf
 Each configuration contains `true_effects/`, `summary_statistics/`, background directories
 and `method_results/`.
 
-## Result summaries and plotting
+## Plotting
+
+After the configurations above have completed, summarize their method results and draw
+Figure 3 from the repository root:
+
+```bash
+Rscript simulations/plot/prepare_figure3.R simulations/results simulations/results/figure3
+Rscript simulations/plot/plot_figure3.R simulations/results/figure3 simulations/figures
+```
+
+The first command writes the QQ and power tables under `results/figure3/`. The second
+writes `figures/Figure_3.pdf` and `figures/Figure_3.png`. Existing method results can be
+used directly. See the [plotting instructions](plot/README.md) for the panel mapping,
+input fields and interval calculations.
 
 For a general summary of one configuration:
 
@@ -68,6 +81,3 @@ Rscript simulations/plot/baseline/evaluate_simulation_study.R --root simulations
 Use the reduced-confounding evaluation script for that profile and pass its complete output
 root, including the suffix above. Evaluation writes `evaluation/` and `figures/` inside the
 configuration output root.
-
-The final Figure 3 composition script is pending. The included evaluation scripts do not
-implement its pooled MR-APSS reference curves or replicate-cluster bootstrap intervals.
