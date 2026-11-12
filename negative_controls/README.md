@@ -32,7 +32,6 @@ Rscript negative_controls/code/run_NC_MRAPSS_EUR.R
 
 The preparation step writes one complete, headerless 10-column table per target/exposure/outcome
 combination (140 tables). It replaces a table only after all six regressions succeed.
-These comparator tables are distinct from the XMR background objects.
 
 ## Plotting
 
